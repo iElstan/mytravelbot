@@ -1,9 +1,9 @@
 import telebot
 import random
-import config
+import os
+import config #ну
 
-bot = telebot.TeleBot(config.TOKEN)
-
+bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 @bot.message_handler(commands=['start'])
 def booked(message):
@@ -53,7 +53,7 @@ def wifi(message):
 def pizduk(message):
     pizduk_list = ['убрано цензурой', 'Вася']
     if message.text == 'Пиздюк, кто я?':
-        pizduk_name = pizduk_list[random.randint(0, len(pizduk_list))]
+        pizduk_name = pizduk_list[random.randint(0, len(pizduk_list)-1)]
         bot.send_message(message.chat.id, f'Вы - {pizduk_name}')
     else:
         pass
