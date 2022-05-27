@@ -1,9 +1,11 @@
 import telebot
 import random
 import os
-import config #ну
+
+# import config  # нужно для отладки офлайн
 
 bot = telebot.TeleBot(os.environ.get('TOKEN'))
+
 
 @bot.message_handler(commands=['start'])
 def booked(message):
@@ -42,6 +44,7 @@ def booked(message):
                   f'Бронь в Карелии: \n{karel}\n'
     bot.send_message(message.chat.id, booked_info)
 
+
 @bot.message_handler(['wifi'])
 def wifi(message):
     wifi_list = 'Карелия:\n' \
@@ -49,11 +52,12 @@ def wifi(message):
                 'Пароль: xMwM2ohx\n'
     bot.send_message(message.chat.id, wifi_list)
 
+
 @bot.message_handler()
-def pizduk(message):
-    pizduk_list = ['убрано цензурой', 'Вася']
-    if message.text == 'Пиздюк, кто я?':
-        pizduk_name = pizduk_list[random.randint(0, len(pizduk_list)-1)]
+def who_am_i_sanya(message):
+    whoami_list = ['убрано цензурой', 'Вася']
+    if message.text == 'Сантей кто я':
+        pizduk_name = whoami_list[random.randint(0, len(whoami_list) - 1)]
         bot.send_message(message.chat.id, f'Вы - {pizduk_name}')
     else:
         pass
