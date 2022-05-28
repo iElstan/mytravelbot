@@ -1,10 +1,11 @@
 import telebot
 import random
 import os
+import data
+import config #нужно для отладки оффлайн
 
-# import config  # нужно для отладки офлайн
-
-bot = telebot.TeleBot(os.environ.get('TOKEN'))
+bot = telebot.TeleBot(config.TOKEN)
+# bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 
 @bot.message_handler(commands=['start'])
@@ -55,10 +56,10 @@ def wifi(message):
 
 @bot.message_handler()
 def who_am_i_sanya(message):
-    whoami_list = ['убрано цензурой', 'Вася']
-    if message.text == 'Сантей кто я':
-        pizduk_name = whoami_list[random.randint(0, len(whoami_list) - 1)]
-        bot.send_message(message.chat.id, f'Вы - {pizduk_name}')
+    # whoami_question = input()
+    if message.text == ('Сантей кто я'):
+        whoami_name = data.get_phrase_list()[random.randint(0, len(data.get_phrase_list()) - 1)]
+        bot.send_message(message.chat.id, f'Ты - {whoami_name}')
     else:
         pass
 
