@@ -2,10 +2,10 @@ import telebot
 import random
 import os
 import data
-import config #нужно для отладки оффлайн
+# import config #нужно для отладки оффлайн
 
-bot = telebot.TeleBot(config.TOKEN)
-# bot = telebot.TeleBot(os.environ.get('TOKEN'))
+# bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 
 @bot.message_handler(commands=['start'])
@@ -20,9 +20,14 @@ def booked(message):
                 '12.06.2022-13.06.2022&guests=4&utm_source=mobile&utm_content=AB5FEE7C2939876273EB8EE9A8ADB5F0&' \
                 'utm_medium=sharing&utm_campaign=hotelpage&sid=4faf46dc-1a36-43ea-8355-a2b5421bffa7'
 
-    spb_main = 'https://sutochno.ru/front/searchapp/detail/1027985?utm_source=app&utm_campaign=android&utm_medium=' \
-               'sharing&wp_processed=1&guests_adults=4&occupied=2022-06-13%3B2022-06-15&id=1&type=country&SW.' \
-               'lat=55.142221&SW.lng=36.803259&NE.lat=56.021281&NE.lng=37.96779'
+    spb_main = 'Адрес: Санкт-Петербург, ул. Жуковского 5.\n ' \
+               '\n' \
+               'Заезд 13 июня в 15.00\n' \
+                'Выезд 15 июня в 12.00\n' \
+                '\n' \
+                'Телефон +7 910 762-82-81 \n' \
+               'Телефон +7 921 964-86-15 \n' \
+               'Оплата при заселении 11730р\n'
 
     karel = 'Адрес: Республика Карелия, Лахденпохский р-он п.Микли, дальше по указателям 1-2 км до хутор Медовое.\n ' \
             '\n' \
