@@ -5,10 +5,12 @@ import data
 import requests
 from bs4 import BeautifulSoup
 
-# import config #нужно для отладки оффлайн
 
-# bot = telebot.TeleBot(config.TOKEN)
-bot = telebot.TeleBot(os.environ.get('TOKEN'))
+if data.DEBUG:
+    import secretconfig #нужно для отладки оффлайн
+    bot = telebot.TeleBot(secretconfig.TOKEN)
+else:
+    bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 html_text = requests.get(data.url)
 
